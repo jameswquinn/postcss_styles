@@ -21,7 +21,6 @@ var processors = [
 
 ];
 
-// 'styles' task used to transform CSS
 gulp.task('styles', () => {
 	gulp.src(structure.src.css)
 		.pipe(plumber(reporter.onError))
@@ -30,7 +29,6 @@ gulp.task('styles', () => {
 		// Pipe the styles in through PostCSS and pass in the 'processors' array.
 		.pipe(postcss(processors))
 		.pipe(rev())
-		// Output the transformed CSS to the
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(structure.dest.css))
 		.pipe(rev.manifest())
