@@ -17,7 +17,8 @@ var processors = [
 	require('postcss-quantity-queries')(),
 	require('postcss-short')(),
 	require('postcss-uncss')({html: ['*.html'],}),
-	require('cssnano')()
+	require('postcss-csso')(),
+
 ];
 
 // 'styles' task used to transform CSS
