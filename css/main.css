@@ -1,20 +1,49 @@
-/* normalize selectors */
-h1::before, h1:before {
-    /* reduce shorthand even further */
-    margin: 10px 20px 10px 20px;
-    /* reduce color values */
-    color: #ff0000;
-    /* remove duplicated properties */
-    font-weight: 400;
-    font-weight: 400;
-    /* reduce position values */
-    background-position: bottom right;
-    /* normalize wrapping quotes */
-    quotes: '«' "»";
-    /* reduce gradient parameters */
-    background: linear-gradient(to bottom, #ffe500 0%, #ffe500 50%, #121 50%, #121 100%);
-    /* replace initial values */
-    min-width: initial;
+/* rucksack */
+.foo {
+  font-size: responsive;
 }
-/* correct invalid placement */
-@charset "utf-8";
+/* rucksack end */
+/* autoprefixer */
+:fullscreen a {
+    display: flex;
+}
+/* autoprefixer end */
+/* lost */
+.NestingSection__grid {
+    background: #8eb19d;
+}
+
+.NestingSection__grid div {
+    background: #7ba48d;
+    lost-column: 1/3;
+}
+
+.NestingSection__grid div div {
+    background: #68977c;
+    lost-column: 1/2;
+}
+/* lost end */
+/* precss */
+/* before */
+
+.notice--clear {
+	@if 3 < 5 {
+		background: green;
+	}
+	@else {
+		background: blue;
+	}
+}
+
+/* precss */
+/* query */
+ul > li:at-least(4) {
+  color: rebeccapurple;
+}
+/* query end */
+/* short */
+.icon {
+  size: 48px;
+}
+
+/* short end */

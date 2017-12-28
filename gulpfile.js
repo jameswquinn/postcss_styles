@@ -12,13 +12,12 @@ var gulp = require('gulp'),
 var processors = [
 	require('lost')(),
 	require('rucksack-css'),
-	require('postcss-cssnext')({ browsers: ['last 4 versions', 'Firefox > 20'], warnForDuplicates: false }),
+	require('postcss-cssnext')({ browsers: ['last 2 versions', 'Firefox > 20'], warnForDuplicates: false }),
 	require('precss')(),
 	require('postcss-quantity-queries')(),
 	require('postcss-short')(),
 	require('postcss-uncss')({html: ['*.html'],}),
 	require('postcss-csso')(),
-
 ];
 
 gulp.task('styles', () => {
