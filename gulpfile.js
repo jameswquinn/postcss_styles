@@ -9,24 +9,24 @@ var gulp = require('gulp'),
 		reporter = require('./config/reporter');
 
 // Array to store PostCSS plugins
-var processors = [
+var postcssOptions = [
 	require('lost')(),
 	require('rucksack-css'),
 	require('postcss-cssnext')({ browsers: ['last 2 versions', 'Firefox > 20'], warnForDuplicates: false }),
 	require('precss')(),
 	require('postcss-quantity-queries')(),
 	require('postcss-short')(),
-	require('postcss-uncss')({html: ['*/*.html'],}),
+	require('postcss-uncss')({html: ['*.html'],}),
 	require('postcss-csso')(),
 ];
 
-gulp.task('build:styles', () => {
+gulp.task('styles', () => {
 	gulp.src(structure.src.css)
 		.pipe(plumber(reporter.onError))
 		.pipe(rename({basename: "app",suffix: '.min'}))
 		.pipe(sourcemaps.init())
 		// Pipe the styles in through PostCSS and pass in the 'processors' array.
-		.pipe(postcss(processors))
+		.pipe(postcss(postcssOptions))
 		.pipe(rev())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(structure.dest.css))
