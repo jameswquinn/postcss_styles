@@ -10,14 +10,15 @@ var gulp = require('gulp'),
 
 // Array to store PostCSS plugins
 var postcssOptions = [
-	require('lost')(),
+	//require('lost')(),
+	require('postcss-grid-kiss')({ browsers: ['last 2 versions', 'Firefox > 20'], fallback: true, optimize: true }),
 	require('rucksack-css'),
 	require('postcss-cssnext')({ browsers: ['last 2 versions', 'Firefox > 20'], warnForDuplicates: false }),
 	require('precss')(),
 	require('postcss-quantity-queries')(),
 	require('postcss-short')(),
-	require('postcss-uncss')({html: ['*.html'],}),
-	require('postcss-csso')(),
+	//require('postcss-uncss')({html: ['*.html'],}),
+	//require('postcss-csso')(),
 ];
 
 gulp.task('styles', () => {
