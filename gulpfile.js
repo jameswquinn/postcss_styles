@@ -16,11 +16,11 @@ var processors = [
 	require('precss')(),
 	require('postcss-quantity-queries')(),
 	require('postcss-short')(),
-	require('postcss-uncss')({html: ['*.html'],}),
+	require('postcss-uncss')({html: ['*/*.html'],}),
 	require('postcss-csso')(),
 ];
 
-gulp.task('styles', () => {
+gulp.task('build:styles', () => {
 	gulp.src(structure.src.css)
 		.pipe(plumber(reporter.onError))
 		.pipe(rename({basename: "app",suffix: '.min'}))
