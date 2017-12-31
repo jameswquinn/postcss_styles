@@ -1,9 +1,8 @@
 var gulp = require('gulp'),
-		rev = require('gulp-rev'),
 		sourcemaps = require('gulp-sourcemaps'),
-		rename = require('gulp-rename'),
 		plumber = require('gulp-plumber'),
 		sass = require('gulp-sass'),
+		prettier = require("@bdchauvette/gulp-prettier"),
 		bs = require('browser-sync'),
 		postcss = require('gulp-postcss'),
 		structure = require('./config/structure'),
@@ -18,8 +17,18 @@ var urlOptions = [
     //{ filter: 'cdn/**/*', url: (asset) => `https://cdn.url/${asset.url}` }
 ];
 
+var bemOptions = [
+	{
+	    defaultNamespace: undefined, // default namespace to use, none by default
+	    style: 'suit', // suit or bem, suit by default,
+	    separators: {descendent: '__'}, // overwrite any default separator for chosen style
+	    shortcuts: {utility: 'util'} //override at-rule name
+	}
+]
+
 // Array to store PostCSS plugins
 var postcssOptions = [
+	require('postcss-bem')(bemOptions),
 	require('postcss-url')(urlOptions),
 	require('postcss-type-scale')(),
 	require('lost')(),
@@ -29,8 +38,8 @@ var postcssOptions = [
 	require('precss')(),
 	require('postcss-quantity-queries')(),
 	require('postcss-short')(),
-	require('postcss-uncss')({html: ['*.html'],}),
-	require('postcss-csso')(),
+	//require('postcss-uncss')({html: ['*.html'],}),
+	//require('postcss-csso')(),
 ];
 
 gulp.task('styles', () => {
@@ -38,8 +47,9 @@ gulp.task('styles', () => {
 		.pipe(plumber(reporter.onError))
 		.pipe(sourcemaps.init())
 		.pipe(postcss(postcssOptions))
+		.pipe(prettier())
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(structure.dest.css)))
+		.pipe(gulp.dest(structure.dest.css))
 		.pipe(bs.stream())
 });
 
@@ -56,6 +66,7 @@ gulp.task('sass',  () => {
 		.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
 		.pipe(postcss(scssOptions))
+		.pipe(prettier())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(structure.dest.css))
 		.pipe(bs.stream())

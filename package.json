@@ -1,29 +1,29 @@
 {
   "name": "postcss-gulp-example",
   "version": "1.0.0",
-  "description": "PostCSS example for Smashing Magazine by Drew Minns",
+  "description": "PostCSS example",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/drewminns"
+    "url": "http://github.com/jameswquinn"
   },
   "author": "Drew Minns",
   "license": "ISC",
   "devDependencies": {
+    "@bdchauvette/gulp-prettier": "^2.0.0",
     "autoprefixer": "^7.2.3",
     "browser-sync": "^2.22.0",
     "gulp": "^3.9.1",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^7.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-rev": "^8.1.1",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.2",
     "lost": "^8.2.0",
     "normalize": "^0.3.1",
+    "postcss-bem": "^0.4.1",
     "postcss-cssnext": "^3.0.2",
     "postcss-csso": "^3.0.0",
     "postcss-grid-kiss": "^1.4.2",
@@ -35,6 +35,7 @@
     "postcss-uncss": "^0.16.1",
     "postcss-url": "^7.3.0",
     "precss": "^2.0.0",
+    "prettier": "^1.9.2",
     "rucksack-css": "^1.0.2",
     "uncss": "^0.16.1"
   }

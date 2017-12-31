@@ -17,6 +17,37 @@ body {
 }
 }
 /* grid-kiss end */
+/* bem */
+@component SearchForm {
+    padding: 0;
+    margin: 0;
+
+    /* Typically, place modifiers above descendents */
+    @modifier advanced {
+        padding: 1rem;
+    }
+
+    @descendent textField {
+        border: 1px solid #ccc;
+    }
+
+}
+/*
+@component SearchForm {
+    padding: 0;
+    margin: 0;
+
+    @modifier advanced {
+        padding: 1rem;
+    }
+
+    @descendent textField {
+        border: 1px solid #ccc;
+    }
+
+}
+*/
+/* bem end */
 /* rucksack */
 .foo {
   font-size: responsive;
