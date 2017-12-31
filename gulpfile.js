@@ -9,9 +9,18 @@ var gulp = require('gulp'),
 		structure = require('./config/structure'),
 		reporter = require('./config/reporter');
 
+var urlOptions = [
+    //{ filter: '**/assets/copy/*.png', url: 'copy', assetsPath: 'img', useHash: true },
+    //{ filter: '**/assets/inline/*.svg', url: 'inline' },
+    //{ filter: '**/assets/**/*.gif', url: 'rebase' },
+		{url: "inline"},
+    // using custom function to build url
+    //{ filter: 'cdn/**/*', url: (asset) => `https://cdn.url/${asset.url}` }
+];
+
 // Array to store PostCSS plugins
 var postcssOptions = [
-	require('postcss-url')({url: "inline"}),
+	require('postcss-url')(urlOptions),
 	require('postcss-type-scale')(),
 	require('lost')(),
 	require('postcss-grid-kiss')({ browsers: ['last 2 versions', 'Firefox > 20'], fallback: false, optimize: true }),
