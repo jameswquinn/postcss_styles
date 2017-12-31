@@ -29,9 +29,8 @@ var postcssOptions = [
 	require('precss')(),
 	require('postcss-quantity-queries')(),
 	require('postcss-short')(),
-	//require('cssgrace'),
-	//require('postcss-uncss')({html: ['*.html'],}),
-	//require('postcss-csso')(),
+	require('postcss-uncss')({html: ['*.html'],}),
+	require('postcss-csso')(),
 ];
 
 gulp.task('styles', () => {
@@ -39,12 +38,8 @@ gulp.task('styles', () => {
 		.pipe(plumber(reporter.onError))
 		.pipe(sourcemaps.init())
 		.pipe(postcss(postcssOptions))
-		.pipe(rename({basename: "postcss",suffix: '.min'}))
-		.pipe(rev())
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(structure.dest.css))
-		.pipe(rev.manifest())
-		.pipe(gulp.dest(structure.dest.css))
+		.pipe(gulp.dest(structure.dest.css)))
 		.pipe(bs.stream())
 });
 
@@ -61,12 +56,8 @@ gulp.task('sass',  () => {
 		.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
 		.pipe(postcss(scssOptions))
-		.pipe(rename({basename: "sass",suffix: '.min'}))
-		.pipe(rev())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(structure.dest.css))
-		.pipe(rev.manifest())
-		.pipe(gulp.dest(structure.dest.scss))
 		.pipe(bs.stream())
 
 });
