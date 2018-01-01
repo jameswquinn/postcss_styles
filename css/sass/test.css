@@ -1,0 +1,81 @@
+/* grid-kiss */
+div {
+	grid-kiss:
+	"+--------------------+ +-------------------+ --"
+	"|                    | |                   |"
+	"|                    | |                   |"
+	"|                    | |                   |"
+	"|       .nav		      | |      .article     |"
+	"|                    | |                   | auto"
+	"|                    | |                   |"
+	"|                    | |                   |"
+	"|                    | |                   |"
+	"+--------38%---------+ +--------auto-------+ --"
+	"																						 20px"
+	"+--------------------+ +-------------------+ --"
+	"|                    | |                   |"
+	"|                    | |                   |"
+	"|                    | |                   |"
+	"|       .meta	      | |      .article     |"
+	"|                    | |                   | auto"
+	"|                    | |                   |"
+	"|                    | |                   |"
+	"|                    | |                   |"
+	"+--------auto--------+ +--------200px------+ --"
+}
+
+
+
+/* grid-kiss end */
+
+/* rucksack */
+.foo {
+  font-size: responsive;
+}
+/* rucksack end */
+/* autoprefixer */
+:fullscreen a {
+    display: flex;
+}
+/* autoprefixer end */
+
+/* precss */
+/* before */
+
+.notice--clear {
+	@if 3 < 5 {
+		background: green;
+	}
+	@else {
+		background: blue;
+	}
+}
+
+/* precss */
+/* query */
+ul > li:at-least(4) {
+  color: rebeccapurple;
+}
+/* query end */
+/* short */
+.icon {
+  size: 48px;
+}
+
+/* short end */
+
+
+body {
+  background-image: url('https://i.pinimg.com/736x/0a/e2/b4/0ae2b4a2fd6512bff7d9b5068a5aace7--people-portraits-women-portraits.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.body {
+  background-image: url('../img/two.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+:fullscreen a {
+    display: flex;
+}

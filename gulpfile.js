@@ -17,29 +17,19 @@ var urlOptions = [
     //{ filter: 'cdn/**/*', url: (asset) => `https://cdn.url/${asset.url}` }
 ];
 
-var bemOptions = [
-	{
-	    defaultNamespace: undefined, // default namespace to use, none by default
-	    style: 'suit', // suit or bem, suit by default,
-	    separators: {descendent: '__'}, // overwrite any default separator for chosen style
-	    shortcuts: {utility: 'util'} //override at-rule name
-	}
-]
-
 // Array to store PostCSS plugins
 var postcssOptions = [
-	require('postcss-bem')(bemOptions),
 	require('postcss-url')(urlOptions),
 	require('postcss-type-scale')(),
-	require('lost')(),
-	require('postcss-grid-kiss')({ browsers: ['last 2 versions', 'Firefox > 20'], fallback: false, optimize: true }),
+	//require('lost')(),
+	//require('postcss-grid-kiss')({ browsers: ['last 2 versions', 'Firefox > 20'], fallback: false, optimize: true }),
 	require('rucksack-css'),
 	require('postcss-cssnext')({ browsers: ['last 2 versions', 'Firefox > 20'], warnForDuplicates: false }),
 	require('precss')(),
 	require('postcss-quantity-queries')(),
 	require('postcss-short')(),
 	//require('postcss-uncss')({html: ['*.html'],}),
-	//require('postcss-csso')(),
+	require('cssnano')({preset: 'default',}),
 ];
 
 gulp.task('styles', () => {
@@ -47,7 +37,7 @@ gulp.task('styles', () => {
 		.pipe(plumber(reporter.onError))
 		.pipe(sourcemaps.init())
 		.pipe(postcss(postcssOptions))
-		.pipe(prettier())
+		//.pipe(prettier())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(structure.dest.css))
 		.pipe(bs.stream())
@@ -57,7 +47,7 @@ gulp.task('styles', () => {
 var scssOptions = [
 	require('autoprefixer')({ browsers: ['last 2 versions', 'Firefox > 20']}),
 	//require('postcss-uncss')({html: ['*.html'],}),
-	require('postcss-csso')(),
+	require('cssnano')({preset: 'default',}),
 ];
 
 gulp.task('sass',  () => {
@@ -66,7 +56,7 @@ gulp.task('sass',  () => {
 		.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
 		.pipe(postcss(scssOptions))
-		.pipe(prettier())
+		//.pipe(prettier())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(structure.dest.css))
 		.pipe(bs.stream())
