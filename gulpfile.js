@@ -21,15 +21,15 @@ var urlOptions = [
 var postcssOptions = [
 	require('postcss-url')(urlOptions),
 	require('postcss-type-scale')(),
-	//require('lost')(),
-	//require('postcss-grid-kiss')({ browsers: ['last 2 versions', 'Firefox > 20'], fallback: false, optimize: true }),
+	require('lost')(),
+	require('postcss-grid-kiss')({ browsers: ['last 2 versions', 'Firefox > 20'], fallback: false, optimize: true }),
 	require('rucksack-css'),
 	require('postcss-cssnext')({ browsers: ['last 2 versions', 'Firefox > 20'], warnForDuplicates: false }),
 	require('precss')(),
 	require('postcss-quantity-queries')(),
 	require('postcss-short')(),
 	//require('postcss-uncss')({html: ['*.html'],}),
-	require('cssnano')({preset: 'default',}),
+	require('postcss-csso')(),
 ];
 
 gulp.task('styles', () => {
