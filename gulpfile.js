@@ -20,17 +20,17 @@ var urlOptions = [
 
 // Array to store PostCSS plugins
 var postcssOptions = [
-	require('lost')(),
-	require('rucksack-css')({autoprefixer: false}),
-	require('postcss-url')(urlOptions),
-	require('postcss-inline-svg'),
-	require('postcss-svgo'),
-	require('postcss-assets')({cachebuster: true}),
-	require('postcss-type-scale')(),
-	require('postcss-quantity-queries')(),
-	require('postcss-short')(),
-	require('postcss-sorting'),
-	require('postcss-grid-kiss')({ browsers: ['last 2 versions', 'Firefox > 20'], fallback: false, optimize: true }),
+	//require('lost')(),
+	//require('rucksack-css')({autoprefixer: false}),
+	//require('postcss-url')(urlOptions),
+	//require('postcss-inline-svg'),
+	//require('postcss-svgo'),
+	//require('postcss-assets')({cachebuster: true}),
+	//require('postcss-type-scale')(),
+	//require('postcss-quantity-queries')(),
+	//require('postcss-short')(),
+	//require('postcss-sorting'),
+	//require('postcss-grid-kiss')({ browsers: ['last 2 versions', 'Firefox > 20'], fallback: false, optimize: true }),
 	require('precss')(),
 	require('postcss-cssnext')({ browsers: ['last 2 versions', 'Firefox > 20'], warnForDuplicates: true }),
 	require('postcss-uncss')({html: ['*.html'],}),
@@ -67,12 +67,13 @@ gulp.task('sass',  () => {
 
 });
 
+
 // Generate & Inline Critical-path CSS
 gulp.task('critical',  (cb) => {
     critical.generate({
         inline: true,
         src: 'index.html',
-        dest: 'build/critical/index-critical.html',
+        dest: 'index-critical.html',
         width: 320,
         height: 480,
         minify: true
