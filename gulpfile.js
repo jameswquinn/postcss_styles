@@ -85,36 +85,46 @@ gulp.task('sass', () => {
 
 
 gulp.task('build:scripts:core', ['build:scripts:vendor'], () =>
-	gulp.src(['node_modules/axios/dist/axios.js',
-  'node_modules/moonjs/dist/moon.js',
-  'node_modules/moon-router/dist/moon-router.js',
-  'node_modules/monx/dist/monx.js',
-  'node_modules/lazysizes/lazysizes.js',
-])
-		.pipe($.sourcemaps.init({largeFile: true}))
-		.pipe($.concat({path: 'js/core.js', cwd: ''}))
+    gulp.src(['node_modules/axios/dist/axios.js',
+        'node_modules/moonjs/dist/moon.js',
+        'node_modules/moon-router/dist/moon-router.js',
+        'node_modules/monx/dist/monx.js',
+        'node_modules/lazysizes/lazysizes.js',
+    ])
+    .pipe($.sourcemaps.init({
+        largeFile: true
+    }))
+    .pipe($.concat({
+        path: 'js/core.js',
+        cwd: ''
+    }))
     .pipe($.uglify())
-		.pipe($.rev())
-		.pipe($.sourcemaps.write('.'))
-		.pipe(gulp.dest('dist'))
+    .pipe($.rev())
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('dist'))
 );
 
 gulp.task('build:scripts:vendor', () =>
-	gulp.src(['node_modules/axios/dist/axios.js',
-  'node_modules/lazysizes/plugins/bgset/ls.bgset.js',
-  'node_modules/lazysizes/plugins/video-embed/ls.video-embed.js',
-  'node_modules/covervid/covervid.js',
-  'node_modules/macy/dist/macy.js',
-  'node_modules/siema/dist/siema.min.js',
-  'node_modules/instafeed/lib/instafeed.js',
-  'node_modules/dynamics.js/lib/dynamics.js'
-])
-		.pipe($.sourcemaps.init({largeFile: true}))
-		.pipe($.concat({path: 'js/vendor.js', cwd: ''}))
+    gulp.src(['node_modules/axios/dist/axios.js',
+        'node_modules/lazysizes/plugins/bgset/ls.bgset.js',
+        'node_modules/lazysizes/plugins/video-embed/ls.video-embed.js',
+        'node_modules/covervid/covervid.js',
+        'node_modules/macy/dist/macy.js',
+        'node_modules/siema/dist/siema.min.js',
+        'node_modules/instafeed/lib/instafeed.js',
+        'node_modules/dynamics.js/lib/dynamics.js'
+    ])
+    .pipe($.sourcemaps.init({
+        largeFile: true
+    }))
+    .pipe($.concat({
+        path: 'js/vendor.js',
+        cwd: ''
+    }))
     .pipe($.uglify())
-		.pipe($.rev())
-		.pipe($.sourcemaps.write('.'))
-		.pipe(gulp.dest('dist'))
+    .pipe($.rev())
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('dist'))
 );
 
 /**
@@ -152,31 +162,28 @@ alt="" type="image/jpeg">
 </picture>
  */
 
- gulp.task('build:images', () => {
-	 gulp.src('src/*.{png,jpg}')
-	.pipe($.responsive({'logo.png': [
-			{
-				width: 200,
-				height: 200,
-				negate: true,
-				blur: 1,
-				quantity: 80,
-				rename: {
-					//dirname: "main/text/ciao",
-					//basename: "aloha",
-					prefix: "bonjour-",
-					suffix: '_200px',
-					extname: '.jpg',
-				},
-				format: 'jpeg',
-			},{
-				width: 200 * 2,
-				height: 200 * 2,
-				rename: 'logo@2x.png'
-			}
-		]
-}))
-	.pipe(gulp.dest('dist'));
+gulp.task('build:images', () => {
+    gulp.src('src/*.{png,jpg}')
+        .pipe($.responsive({
+            'logo.png': [{
+                width: 200,
+                height: 200,
+                //negate: true,
+                //blur: 1,
+                quantity: 80,
+                rename: {
+                    prefix: "bonjour-",
+                    suffix: '_200px',
+                    extname: '.jpg',
+                },
+                format: 'jpeg',
+            }, {
+                width: 200 * 2,
+                height: 200 * 2,
+                rename: 'logo@2x.png'
+            }]
+        }))
+        .pipe(gulp.dest('dist'));
 });
 
 // Generate & Inline Critical-path CSS
