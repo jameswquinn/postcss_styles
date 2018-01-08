@@ -158,7 +158,12 @@ alt="" type="image/jpeg">
 			{
 				width: 200,
 				height: 200,
+				negate: true,
+				blur: 1,
+				quantity: 80,
 				rename: {
+					//dirname: "main/text/ciao",
+					//basename: "aloha",
 					prefix: "bonjour-",
 					suffix: '_200px',
 					extname: '.jpg',
