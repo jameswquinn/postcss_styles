@@ -82,11 +82,22 @@ gulp.task('critical',  (cb) => {
 			    // Your CSS Files (optional)
 			    //css: ['dist/styles/main.css'],
 
-			    // Viewport width
-			    width: 1300,
 
-			    // Viewport height
-			    height: 900,
+
+					dimensions: [{
+						// Viewport width
+				    width: 320,
+
+				    // Viewport height
+				    height: 480
+					    }, {
+								width: 1300,
+
+						    // Viewport height
+						    height: 900
+					    }],
+			    // Viewport width
+
 
 			    // Target for final HTML output.
 			    // use some CSS file when the inline option is not set
