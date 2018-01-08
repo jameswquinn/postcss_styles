@@ -103,7 +103,7 @@ gulp.task('critical', (cb) => {
             // Viewport height
             height: 480
         }, {
-					  // Viewport width
+            // Viewport width
             width: 1300,
 
             // Viewport height
