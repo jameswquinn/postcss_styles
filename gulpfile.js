@@ -1,11 +1,7 @@
 var gulp = require('gulp'),
-		sourcemaps = require('gulp-sourcemaps'),
-		plumber = require('gulp-plumber'),
-		sass = require('gulp-sass'),
-		prettier = require("@bdchauvette/gulp-prettier"),
+		$ = require('gulp-load-plugins')(),
 		bs = require('browser-sync'),
 		critical = require('critical'),
-		postcss = require('gulp-postcss'),
 		structure = require('./config/structure'),
 		reporter = require('./config/reporter');
 
@@ -22,9 +18,9 @@ var urlOptions = [
 var postcssOptions = [
 	//require('lost')(),
 	//require('rucksack-css')({autoprefixer: false}),
-	//require('postcss-url')(urlOptions),
-	//require('postcss-inline-svg'),
-	//require('postcss-svgo'),
+	require('postcss-url')(urlOptions),
+	require('postcss-inline-svg'),
+	require('postcss-svgo'),
 	//require('postcss-assets')({cachebuster: true}),
 	//require('postcss-type-scale')(),
 	//require('postcss-quantity-queries')(),
@@ -39,11 +35,10 @@ var postcssOptions = [
 
 gulp.task('styles', () => {
 	gulp.src(structure.src.css)
-		.pipe(plumber(reporter.onError))
-		.pipe(sourcemaps.init())
-		.pipe(postcss(postcssOptions))
-		.pipe(prettier({singleQuote: true, trailingComma: "all"})) // Normal prettier options, e.g.:
-		.pipe(sourcemaps.write('.'))
+		.pipe($.plumber(reporter.onError))
+		.pipe($.sourcemaps.init())
+		.pipe($.postcss(postcssOptions))
+		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest(structure.dest.css))
 		.pipe(bs.stream())
 });
@@ -57,11 +52,11 @@ var scssOptions = [
 
 gulp.task('sass',  () => {
   gulp.src(structure.src.scss)
-		.pipe(plumber(reporter.onError))
-		.pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+		.pipe($.plumber(reporter.onError))
+		.pipe($.sourcemaps.init())
+    .pipe($.sass().on('error', sass.logError))
 		.pipe(postcss(scssOptions))
-		.pipe(sourcemaps.write('.'))
+		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest(structure.dest.css))
 		.pipe(bs.stream())
 
